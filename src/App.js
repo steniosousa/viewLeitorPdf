@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 const App = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [response, setResponse] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -11,6 +11,7 @@ const App = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(!loading)
 
     if (!selectedFile) {
       alert('Selecione um arquivo PDF antes de enviar.');
@@ -26,12 +27,16 @@ const App = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
+      setLoading(false)
+
       exibirInformacoes(data);
 
     } catch (error) {
+      setLoading(false)
       console.error('Erro ao enviar PDF:', error);
       alert('Erro ao enviar PDF. Verifique o console para mais detalhes.');
     }
+
   };
 
   function exibirInformacoes(informacoes) {
@@ -46,6 +51,20 @@ const App = () => {
   }
 
 
+  async function health() {
+    try {
+      await axios.get('https://readerpdfandimage.onrender.com/ping')
+    } catch {
+      alert('O SISTEMA ESTÁ DESLIGADO, tente novamente em instantes');
+
+    }
+
+  }
+  useEffect(() => {
+    health()
+  })
+
+
   return (
     <div className="centered-container">
       <h1>Envio de PDF para Backend</h1>
@@ -53,6 +72,9 @@ const App = () => {
         <input type="file" name="pdfFile" onChange={handleFileChange} accept=".pdf" />
         <button type="submit">Enviar PDF</button>
       </form>
+      {loading ? (
+        <p>Carregando...</p>
+      ) : null}
       <div class="terminal-box">
         <pre id="terminal-content">
         </pre>
