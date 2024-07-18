@@ -35,6 +35,13 @@ body {
   margin: 0;
 }
 
+.card {
+  margin: 10px;
+  border-bottom: 1px solid #ffffff;
+  padding-bottom: 10px;
+
+}
+
 /* Estilo da caixa do terminal */
 .terminal-box {
   width: 80%;
