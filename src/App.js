@@ -23,7 +23,7 @@ const App = () => {
     const formData = new FormData();
     formData.append('pdf', selectedFile);
     try {
-      const { data } = await axios.post('https://readerpdfandimage.onrender.com/api/v1/ler-pdf', formData, {
+      const { data } = await axios.post('https://readerpdfandimage-production.up.railway.app/api/v1/ler-pdf', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -58,12 +58,11 @@ const App = () => {
     card.textContent = formattedText;
     terminalContent.appendChild(card);
   }
-
-
+ 
 
   async function health() {
     try {
-      await axios.get('https://readerpdfandimage.onrender.com/ping')
+      await axios.get('https://readerpdfandimage-production.up.railway.app/ping')
     } catch {
       alert('O SISTEMA ESTÁ DESLIGADO, tente novamente em instantes');
 
