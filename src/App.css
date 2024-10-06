@@ -1,66 +1,136 @@
-.centered-container {
-  background: 'red';
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  /* 100% da altura da viewport */
-  margin: 0;
-}
-
-.centered-container form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-  /* Espaço acima do formulário */
-}
-
-.centered-container h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  /* Espaço abaixo do título */
-}
-
-/* Estilos gerais para a página */
 body {
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  background-color: #2d2d2d;
-  color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   margin: 0;
+  padding: 0;
+}
+
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+.file-input {
+  align-self: 'center';
+}
+
+input[type="file"] {
+  display: none; /* Esconde o input padrão */
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3;
+}
+
+
+
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.loading-message {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.summary {
+  margin: 20px 0;
+  color: #555;
+}
+
+.terminal-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 100%;
+  max-width: 600px;
+  min-height: 200px;
+  overflow-y: auto;
+  background-color: #fafafa;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .card {
-  margin: 10px;
-  border-bottom: 1px solid #ffffff;
-  padding-bottom: 10px;
-
+  margin: 5px 0;
+  padding: 5px;
+  background-color: #e9ecef;
+  border-radius: 4px;
 }
 
-/* Estilo da caixa do terminal */
-.terminal-box {
-  width: 80%;
-  max-width: 800px;
-  height: 60vh;
-  overflow: auto;
-  background-color: #1e1e1e;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+.modules-selection {
+  width: '100%';
+  margin: 20px ;
+  display: flex;
+  flex-wrap: wrap; /* Permite quebra de linha se necessário */
+  gap: 15px; /* Espaçamento entre os checkboxes */
 }
 
-/* Estilo para as linhas de texto dentro do terminal */
-#terminal-content {
-  font-size: 14px;
-  line-height: 1.5;
-  white-space: pre-wrap;
-  /* Manter a quebra de linha */
-  overflow-wrap: break-word;
-  /* Quebrar palavras longas */
-  margin: 0;
+.module-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.module-checkbox {
+  margin-right: 8px; /* Espaçamento entre o checkbox e o texto */
+  appearance: none; /* Remove o estilo padrão */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; /* Faz o checkbox redondo */
+  border: 2px solid #007bff; /* Borda do checkbox */
+  outline: none;
+  cursor: pointer;
+  position: relative; /* Para o estado de verificação */
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.module-checkbox:checked {
+  background-color: #007bff; /* Cor de fundo quando checado */
+  border-color: #007bff; /* Cor da borda quando checado */
+}
+
+.module-checkbox:checked::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; /* Redondo */
+  background-color: white; /* Cor do ponto dentro do checkbox */
 }
