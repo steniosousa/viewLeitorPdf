@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
@@ -63,18 +63,6 @@ const App = () => {
     terminalContent.appendChild(card);
 };
 
-
-  async function health() {
-    try {
-      await axios.get('https://readerpdfandimage-production.up.railway.app/api/v1/ler-pdf');
-    } catch {
-      alert('O SISTEMA ESTÁ DESLIGADO, tente novamente em instantes');
-    }
-  }
-
-  useEffect(() => {
-    health();
-  }, []);
 
 
   return (
